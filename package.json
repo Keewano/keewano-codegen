@@ -1,6 +1,6 @@
 {
   "name": "@keewano/codegen",
-  "version": "1.0.1",
+  "version": "1.0.1-105",
   "description": "Keewano custom-events codegen: turns one JSON file of event definitions into the generated event module for every Keewano SDK.",
   "homepage": "https://github.com/Keewano/keewano-codegen#readme",
   "bugs": "https://github.com/Keewano/keewano-codegen/issues",
