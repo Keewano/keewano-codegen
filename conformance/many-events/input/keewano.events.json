@@ -1,0 +1,44 @@
+{
+  "events": [
+    {
+      "eventName": "Event00",
+      "eventValueType": "none"
+    },
+    {
+      "eventName": "Event01",
+      "eventValueType": "string"
+    },
+    {
+      "eventName": "Event02",
+      "eventValueType": "uint"
+    },
+    {
+      "eventName": "Event03",
+      "eventValueType": "bool"
+    },
+    {
+      "eventName": "Event04",
+      "eventValueType": "timestamp"
+    },
+    {
+      "eventName": "Event05",
+      "eventValueType": "ushortvec2"
+    },
+    {
+      "eventName": "Event06",
+      "eventValueType": "price_usd_cent"
+    },
+    {
+      "eventName": "Event07",
+      "eventValueType": "none"
+    },
+    {
+      "eventName": "Event08",
+      "eventValueType": "string"
+    },
+    {
+      "eventName": "Event09",
+      "eventValueType": "uint"
+    }
+  ]
+}

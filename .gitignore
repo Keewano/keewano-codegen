@@ -1,0 +1,65 @@
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
+
+# Packed package tarballs (npm pack / npm pack --workspaces)
+*.tgz
+
+# Dependencies
+node_modules/
+
+# Coverage
+coverage/
+
+# Scratch directory of scripts/check-determinism.sh, removed by its EXIT trap
+# unless the run is killed first
+.determinism-*/
+
+# Test execution reports (jest-junit)
+junit.xml
+test-report.xml
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE / OS
+.DS_Store
+.vscode/
+.idea/
+.claude/
+*.swp
+*.swo
+
+# Local-only runnable examples
+examples/
+
+# A local settings file would change what the CLI tests generate
+keewano.codegen.json
+
+# Scratch output of scripts/check-determinism.sh
+.determinism/
+
+# Local knowledge-graph tooling output; never part of a release.
+graphify-out/
+
+# Standalone executables produced by scripts/build-binaries.cjs
+binaries/
+
+# Local tarballs produced by scripts/pack-local.cjs
+packs/
+wheels/
+wrappers/gradle/build/
+wrappers/gradle/.gradle/
+wrappers/spm/artifacts/
+
+# Left behind by running the wheel guard
+__pycache__/

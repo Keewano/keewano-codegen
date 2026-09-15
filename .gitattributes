@@ -1,0 +1,5 @@
+# Everything the tool reads or writes is compared byte for byte (the generated
+# source, the conformance vectors, the tests that diff them), so a CRLF checkout
+# would fail the suite on Windows. The CLI bin shim additionally needs an LF
+# shebang to stay executable on Linux/macOS.
+* text=auto eol=lf

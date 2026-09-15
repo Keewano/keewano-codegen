@@ -1,0 +1,18 @@
+{
+  "empty-set": {
+    "version": 0,
+    "eventCount": 0
+  },
+  "single-event": {
+    "version": 2673883758,
+    "eventCount": 1
+  },
+  "sort-order": {
+    "version": 18409673,
+    "eventCount": 5
+  },
+  "many-events": {
+    "version": 2754016512,
+    "eventCount": 10
+  }
+}

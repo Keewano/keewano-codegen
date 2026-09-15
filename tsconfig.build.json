@@ -1,0 +1,7 @@
+{
+  "exclude": ["dist", "node_modules", "**/__tests__/**"],
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "types": ["node"]
+  }
+}

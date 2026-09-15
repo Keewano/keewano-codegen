@@ -1,0 +1,24 @@
+{
+  "events": [
+    {
+      "eventName": "A00",
+      "eventValueType": "string"
+    },
+    {
+      "eventName": "A10",
+      "eventValueType": "uint"
+    },
+    {
+      "eventName": "A9",
+      "eventValueType": "bool"
+    },
+    {
+      "eventName": "B00",
+      "eventValueType": "timestamp"
+    },
+    {
+      "eventName": "X00",
+      "eventValueType": "ushortvec2"
+    }
+  ]
+}

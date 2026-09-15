@@ -1,0 +1,68 @@
+# The wheel is built once per platform, each carrying the executable for that
+# platform and nothing else. There is no source distribution on purpose: an sdist
+# would promise a build from source, and the thing being shipped cannot be built
+# from Python source at all.
+[build-system]
+# setuptools 77 is the floor for the SPDX `license` field and `license-files`
+# below; an older one reads both as unknown keys and the wheel loses its licence
+# metadata without failing. The build runs on the pinned image in
+# scripts/build-wheels.sh, not on the interpreter the wheel targets, so this
+# floor says nothing about `requires-python`.
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "keewano-codegen"
+version = "1.0.1"
+description = "Keewano custom-events codegen: turns one JSON file of event definitions into the generated event module for every Keewano SDK."
+readme = "README.md"
+# SPDX expression plus the file itself, which scripts/build-wheels.sh stages
+# beside this manifest: the licence lives at the repository root and a wheel
+# built from the wrapper directory alone would ship without one. A
+# `License ::` classifier cannot be listed alongside this and is therefore
+# absent from the list below.
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Keewano" }]
+requires-python = ">=3.8"
+keywords = ["analytics", "keewano", "sdk", "codegen", "custom-events", "cli"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Operating System :: MacOS",
+  "Operating System :: Microsoft :: Windows",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Software Development :: Code Generators",
+]
+
+# What the PyPI sidebar links to. The project page is otherwise a dead end: the
+# wheel carries an executable and no source, so the repository is the only place
+# a reader can see what they installed.
+[project.urls]
+Homepage = "https://github.com/Keewano/keewano-codegen"
+Documentation = "https://github.com/Keewano/keewano-codegen#readme"
+Source = "https://github.com/Keewano/keewano-codegen"
+Issues = "https://github.com/Keewano/keewano-codegen/issues"
+
+[project.scripts]
+keewano-codegen = "keewano_codegen.cli:main"
+
+[tool.setuptools]
+# The executable is data, not code: setuptools would otherwise skip a file it
+# does not recognise as a module, and the wheel would install a wrapper with
+# nothing to run.
+include-package-data = true
+
+[tool.setuptools.packages.find]
+include = ["keewano_codegen*"]
+
+[tool.setuptools.package-data]
+keewano_codegen = ["_bin/*"]

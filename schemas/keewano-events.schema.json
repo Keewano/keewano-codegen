@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://keewano.com/schemas/keewano-events.schema.json",
+  "title": "Keewano custom event definitions",
+  "description": "One file, every event. Position in `events` is the event's wire id: the first is 2500, the next 2501, and so on. Reordering or removing an entry renumbers every entry after it.",
+  "type": "object",
+  "required": ["events"],
+  "additionalProperties": false,
+  "properties": {
+    "events": {
+      "type": "array",
+      "description": "The events, in declaration order. Append to the end; the order is the numbering.",
+      "items": {
+        "type": "object",
+        "required": ["eventName", "eventValueType"],
+        "additionalProperties": false,
+        "properties": {
+          "eventName": {
+            "type": "string",
+            "description": "Event name. PascalCase ASCII identifier; capped at 128 characters so the wire varint length stays small and a pathological input cannot dominate the gzip pass.",
+            "pattern": "^[A-Z][A-Za-z0-9_]*$",
+            "maxLength": 128
+          },
+          "eventValueType": {
+            "type": "string",
+            "description": "Payload type, spelled as the generator's help prints it: none, string, uint, bool, timestamp, ushortvec2, price_usd_cent.",
+            "enum": ["none", "string", "uint", "bool", "timestamp", "ushortvec2", "price_usd_cent"]
+          }
+        }
+      }
+    }
+  }
+}

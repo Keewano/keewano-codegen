@@ -1,0 +1,101 @@
+{
+  "name": "@keewano/codegen",
+  "version": "1.0.1",
+  "description": "Keewano custom-events codegen: turns one JSON file of event definitions into the generated event module for every Keewano SDK.",
+  "homepage": "https://github.com/Keewano/keewano-codegen#readme",
+  "bugs": "https://github.com/Keewano/keewano-codegen/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Keewano/keewano-codegen.git"
+  },
+  "author": "Keewano",
+  "main": "./dist/src/index.js",
+  "types": "./dist/src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "import": "./dist/src/index.js",
+      "require": "./dist/src/index.js",
+      "default": "./dist/src/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "keewano-codegen": "./bin/keewano-codegen.cjs"
+  },
+  "files": [
+    "bin",
+    "dist",
+    "schemas",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "build:prod": "tsc -p tsconfig.prod.json",
+    "build:ci": "npm run build:prod && npm run build:binaries && npm run check:determinism && npm run check:classifiers && npm run check:tables && npm run check:glibc",
+    "build:binaries": "node scripts/build-binaries.cjs",
+    "pack:local": "node scripts/pack-local.cjs",
+    "check:determinism": "bash scripts/check-determinism.sh",
+    "clean": "rimraf dist",
+    "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p conformance/tsconfig.json",
+    "lint": "eslint . --ext .ts,.js,.cjs",
+    "lint:fix": "eslint . --ext .ts,.js,.cjs --fix",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "test": "npm run typecheck && jest",
+    "test:cov": "jest --ci --coverage",
+    "check:native": "bash scripts/check-native-vectors.sh",
+    "check:reserved": "node scripts/check-reserved-names.cjs",
+    "check:surfaces": "node scripts/check-surfaces.cjs",
+    "build:wheels": "bash scripts/build-wheels.sh",
+    "check:wheel": "bash scripts/check-wheel.sh",
+    "build:bundle": "bash scripts/build-artifactbundle.sh",
+    "check:wrappers": "bash scripts/check-wrappers.sh",
+    "check:classifiers": "node scripts/check-host-classifiers.cjs",
+    "check:tables": "node scripts/check-platform-tables.cjs",
+    "check:glibc": "node scripts/check-glibc-floor.cjs",
+    "check:launcher": "bash scripts/check-python-launcher.sh",
+    "check:plugin": "bash scripts/check-gradle-plugin.sh"
+  },
+  "keywords": [
+    "analytics",
+    "keewano",
+    "sdk",
+    "codegen",
+    "custom-events",
+    "cli"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "ajv": "8.20.0",
+    "chokidar": "3.6.0",
+    "pako": "2.1.0"
+  },
+  "devDependencies": {
+    "@types/jest": "29.5.14",
+    "@types/node": "20.19.27",
+    "@types/pako": "2.0.4",
+    "@typescript-eslint/eslint-plugin": "8.46.4",
+    "@typescript-eslint/parser": "8.46.4",
+    "bun": "1.4.0",
+    "eslint": "8.57.1",
+    "eslint-plugin-import": "2.31.0",
+    "eslint-plugin-sonarjs": "4.0.3",
+    "jest": "29.7.0",
+    "jest-junit": "17.0.0",
+    "prettier": "3.8.3",
+    "rimraf": "5.0.10",
+    "ts-jest": "29.4.9",
+    "typescript": "5.9.3"
+  },
+  "overrides": {
+    "fast-uri": "3.1.7",
+    "brace-expansion@^1": "1.1.18",
+    "brace-expansion@^2": "2.1.4",
+    "js-yaml": "4.3.2"
+  }
+}
